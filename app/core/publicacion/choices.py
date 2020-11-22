@@ -1,6 +1,6 @@
 tipoPublicacion_choices = (
-    ('arituclo','Articulo'),
-    ('Documentos ','Docuemtos de Trabajo'),
+    ('Articulo','Articulo'),
+    ('Docuemtos de Trabajo ','Docuemtos de Trabajo'),
     ('software', 'Softwares'),
     ('consultorias', 'Consultorías científico-tecnológicas'),
     ('eventos', 'Eventos Científicos'),
