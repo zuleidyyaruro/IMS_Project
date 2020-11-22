@@ -40,6 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core.home',
     'core.login',
+    'core.publicacion',
+
+    'allauth',
+    'allauth.account',
+    'django.contrib.sites',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+
 ]
 
 MIDDLEWARE = [
@@ -98,6 +107,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+ )
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
+SITE_ID = 2
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -117,6 +146,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL='/index/'
+LOGOUT_REDIRECT_URL='/'
+
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
