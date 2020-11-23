@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include('core.login.urls')),
     path('', include('core.home.urls')),
     path('publicaciones/', include('core.publicacion.urls')),
+    path('semilleros/', include('core.semillero.urls')),
 ]

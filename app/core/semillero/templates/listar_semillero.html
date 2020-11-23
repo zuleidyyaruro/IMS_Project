@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card card-default">
+        <div class="card-header">
+            <h5 class="card-title">
+
+                {{ title }}
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table" id="data">
+                <thead>
+                {% block columns %}
+
+                    <tr>
+                        <th scope="col">Nro</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Línea de Investigación</th>
+                        <th scope="col">Año de Creacion</th>
+                        <th scope="col">Director</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Telefono</th>
+                        <th scope="col">Acciones</th>
+
+                    </tr>
+
+                {% endblock %}
+                </thead>
+                <tbody>
+                {% block rows %}
+                    {% for elemento in lista %}
+                        <tr>
+                            <td>{{ elemento.id }}</td>
+                            <td>{{ elemento.nombre }}</td>
+                            <td>{{ elemento.linea_investigacion }}</td>
+                            <td>{{ elemento.anio_constitucion }}</td>
+                            <td>{{ elemento.director }}</td>
+                            <td>{{ elemento.correo }}</td>
+                            <td>{{ elemento.telefono }}</td>
+                            <td>
+                                <a href="{%url 'semilleros_actualizar' elemento.id%}" class="btn btn-warning btn-xs btn-flat">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <a href="{%url 'semilleros_eliminar' elemento.id%}" class="btn btn-danger btn-xs btn-flat">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+
+                {% endblock %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+
+            <a href="{%url 'semilleros_crear'%}" class="btn btn-info btn-flat">
+                                    <i class="fas fa-plus"></i> Nuevo registro
+            </a>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

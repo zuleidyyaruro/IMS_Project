@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'core.home',
     'core.login',
     'core.publicacion',
+    'core.semillero',
+
 
     'allauth',
     'allauth.account',
