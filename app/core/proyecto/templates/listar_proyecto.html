@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card card-default">
+        <div class="card-header">
+            <h5 class="card-title">
+
+                {{ title }}
+            </h5>
+        </div>
+        <div class="card-body">
+            <table class="table" id="data">
+                <thead>
+                {% block columns %}
+
+                    <tr>
+                        <th scope="col">Nro</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Semillero</th>
+                        <th scope="col">Autores</th>
+                        <th scope="col">Fecha_Inicio</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+
+                {% endblock %}
+                </thead>
+                <tbody>
+                {% block rows %}
+                    {% for elemento in lista %}
+                        <tr>
+                            <td>{{ elemento.id }}</td>
+                            <td>{{ elemento.nombre }}</td>
+                            <td>{{ elemento.semillero.nombre }}</td>
+                            <td>{{ elemento.autores }}</td>
+                            <td>{{ elemento.fecha_inicio }}</td>
+                            <td>
+                                <a href="{%url 'proyectos_actualizar' elemento.id%}" class="btn btn-warning btn-xs btn-flat">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <a href="{%url 'proyectos_eliminar' elemento.id%}" class="btn btn-danger btn-xs btn-flat">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+
+                {% endblock %}
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer">
+
+            <a href="{%url 'proyectos_crear'%}" class="btn btn-info btn-flat">
+                                    <i class="fas fa-plus"></i> Nuevo registro
+            </a>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

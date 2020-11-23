@@ -16,7 +16,6 @@ import config.db as db
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = '5jcum3c&3ruimpy+^ps!ekh&v83n!*h1%_-ks#l9eubex575n%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -42,7 +40,9 @@ INSTALLED_APPS = [
     'core.login',
     'core.publicacion',
     'core.semillero',
-
+    'core.proyecto',
+    'core.integrante',
+    'core.contacto',
 
     'allauth',
     'allauth.account',
@@ -84,12 +84,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = db.SQLITE
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -112,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
- )
+)
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -128,8 +126,6 @@ SOCIALACCOUNT_PROVIDERS = {
 
 SITE_ID = 2
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -143,17 +139,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL='/index/'
-LOGOUT_REDIRECT_URL='/'
-
+LOGIN_REDIRECT_URL = '/index/'
+LOGOUT_REDIRECT_URL = '/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     '/var/www/static/',
 ]
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'correopruebacreditos@gmail.com'
+EMAIL_HOST_PASSWORD = 'CorreoPruebaCreditos'

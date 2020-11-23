@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card card-default">
+        <div class="card-header">
+            <h5 class="card-title">
+
+                {{ title }}
+            </h5>
+        </div>
+        <div class="card-body">
+
+                <div class="row" >
+
+                    {% for elemento in lista %}
+
+                    <div class="card mb-2 col-3" style="width: 12rem;">
+                        <img src="{{ elemento.imagen.url }}" class="card-img-top" alt="img">
+                        <div class="card-body">
+                            <h6 class="card-title">Nombres: {{ elemento.nombres }}</h6>
+                            <p class="card-text">Email: {{ elemento.correo }}</p>
+                            <p class="card-text">Telefóno: {{ elemento.telefono }}</p>
+                            <p class="card-text">Semillero: {{ elemento.semillero }}</p>
+
+                        </div>
+
+                        <div class=" text-center mb-2">
+                            <a href="{% url 'integrantes_actualizar' elemento.id %}"
+                               class="btn btn-warning btn-xs btn-flat">
+                                <i class="fas fa-edit"></i>
+                            </a>
+
+                            <a href="{% url 'integrantes_eliminar' elemento.id %}" class="btn btn-danger btn-xs btn-flat">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+
+        </div>
+        <div class="card-footer">
+
+            <a href="{% url 'integrantes_crear' %}" class="btn btn-info btn-flat">
+                <i class="fas fa-plus"></i> Nuevo registro
+            </a>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

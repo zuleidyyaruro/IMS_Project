@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="card card-default">
+        <div class="card-header">
+            <h5 class="card-title">
+
+                {{ title }}
+            </h5>
+        </div>
+        <div class="card-body  ">
+
+            <div class="card row mt-2  offset-3 col-6">
+
+                <div class="card-body">
+
+                    <form method='POST' class="mt-3 ">{% csrf_token %}
+
+                        <div class="row">
+                            <p> ¿Realmente desea eliminar el registro '{{ object}}'?</p>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-danger">Confirmar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

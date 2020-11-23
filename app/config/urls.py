@@ -16,10 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.login.urls')),
     path('', include('core.home.urls')),
+    path('', include('core.contacto.urls')),
     path('publicaciones/', include('core.publicacion.urls')),
     path('semilleros/', include('core.semillero.urls')),
+    path('proyectos/', include('core.proyecto.urls')),
+    path('integrantes/', include('core.integrante.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
