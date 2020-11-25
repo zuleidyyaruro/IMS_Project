@@ -1,0 +1,106 @@
+{% load static %}
+{% load socialaccount %}
+{% load widget_tweaks %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Signin Template · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/sign-in/">
+    <script src="https://kit.fontawesome.com/bb81f8c74d.js" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'librerias/bootstrap-4.5.3-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+</head>
+<body class="text-center">
+
+{#<form action="{% url 'register' %}" method="POST" autocomplete="off">#}
+{#    {% csrf_token %}#}
+{##}
+{#    <div class="field">#}
+{#        <label for="{{ form.username.id_for_label }}" class="label">#}
+{#            Username#}
+{#        </label>#}
+{#        <div class="control">#}
+{#            {{ form.username|add_class:"input" }}#}
+{#        </div>#}
+{#        <p class="help is-danger">{{ form.username.errors }}</p>#}
+{#    </div>#}
+{##}
+{#    <div class="field">#}
+{#        <label for="{{ form.password1.id_for_label }}" class="label">#}
+{#            Password#}
+{#        </label>#}
+{#        <div class="control">#}
+{#            {{ form.password1|add_class:"input" }}#}
+{#        </div>#}
+{#        <p class="help is-danger">{{ form.password1.errors }}</p>#}
+{#    </div>#}
+{##}
+{#    <div class="field">#}
+{#        <label for="{{ form.password2.id_for_label }}" class="label">#}
+{#            Password Check#}
+{#        </label>#}
+{#        <div class="control">#}
+{#            {{ form.password2|add_class:"input" }}#}
+{#        </div>#}
+{#        <p class="help is-danger">{{ form.password2.errors }}</p>#}
+{#    </div>#}
+{##}
+{#    <div class="field">#}
+{#        <div class="control">#}
+{#            <button class="button is-link">Submit</button>#}
+{#        </div>#}
+{#    </div>#}
+{#</form>#}
+
+
+<form method="post" class="form-signin">{% csrf_token %}
+
+    <h1 class="h3 mb-3 font-weight-normal text-info">Registro</h1>
+
+    <div class="input-group mb-3">
+        {{ form.username|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su username' }}
+
+    </div>
+
+    <div class="input-group mb-2">
+        {{ form.password1|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su password' }}
+
+    </div>
+
+    <div class="input-group mb-3">
+        {{ form.password2|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Vuelva a ingresar su password' }}
+
+    </div>
+
+    <button class="btn btn-lg btn-success btn-block" type="submit">Enviar</button>
+</form>
+
+</body>
+</html>

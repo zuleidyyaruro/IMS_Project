@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core.proyecto',
     'core.integrante',
     'core.contacto',
+    'widget_tweaks',
 
     'allauth',
     'allauth.account',
