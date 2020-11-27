@@ -1,6 +1,7 @@
 {% load static %}
 {% load socialaccount %}
 {% load widget_tweaks %}
+{% providers_media_js %}
 
 <!doctype html>
 <html lang="en">
@@ -43,7 +44,7 @@
     <h1 class="h3 mb-3 font-weight-normal text-info">Por favor Inicie Sesión</h1>
     <div class="input-group mb-3">
         {{ form.username|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su username' }}
-        
+
     </div>
     <div class="input-group mb-3">
         {{ form.password|add_class:'form-control'|attr:'autocomplete:off'|attr:'placeholder:Ingrese su password' }}
@@ -53,12 +54,13 @@
     <button class="btn btn-lg btn-success btn-block" type="submit">Iniciar Sesión</button>
     <a href="{% provider_login_url 'google' %}" class="gp btn btn-lg btn-block btn-danger mt-2">Iniciar Sesión con
         Gmail</a>
-    <a href="{% provider_login_url 'facebook' %}" class="gp btn btn-lg btn-block btn-primary mt-2">Iniciar Sesión con
+    <a href="{% provider_login_url 'facebook' method='oauth2' %}"
+               class="gp btn btn-lg btn-block btn-primary mt-2">Iniciar Sesión con
         Facebook</a>
 
-    <a class="btn btn-lg btn-dark btn-block"  href="{% url 'register' %}">Registrarse</a>
+    <a class="btn btn-lg btn-dark btn-block" href="{% url 'register' %}">Registrarse</a>
 
-    <p class="mt-5 mb-3 text-muted" >&copy; 2020</p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
 </form>
 </body>
 </html>
